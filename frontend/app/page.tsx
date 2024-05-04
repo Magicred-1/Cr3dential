@@ -1,6 +1,37 @@
+"use client"
+
 import Image from "next/image";
+import { getTests } from "./dbFetchExample";
+import { useLinkedIn } from 'react-linkedin-login-oauth2';
+
 
 export default function Home() {
+  const { linkedInLogin } = useLinkedIn({
+    clientId: '78zherg5uo7ead',
+    scope: 'r_basicprofile',
+    redirectUri: `http://localhost:3000/linkedIn`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
+    onSuccess: (code) => {
+      console.log(code);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const handleClick = () => {
+    
+    getTests().then((res) => {
+      console.log(res);
+    })
+
+  };
+
+  const testLinkedIn = () => {
+
+    console.log(`${window.location.origin}`)
+    linkedInLogin()
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -38,6 +69,9 @@ export default function Home() {
           priority
         />
       </div>
+
+      <button onClick={handleClick}> SALIFAHJZIF </button>
+      <button onClick={testLinkedIn}> LinkedIn </button>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
         <a
