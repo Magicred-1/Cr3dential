@@ -31,3 +31,11 @@ body {
     text-wrap: balance;
   }
 }
+
+.background-ui {
+  background: url(/background-ui.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
