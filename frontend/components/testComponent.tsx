@@ -1,4 +1,4 @@
-import { getTests } from "@/app/dbFetchExample";
+import { getTests } from "@/components/db-related/dbFetchExample";
 
 function TestComp() {
       const randomString = () => {
