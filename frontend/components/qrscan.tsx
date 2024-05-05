@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { Scanner } from '@yudiel/react-qr-scanner';
-import { Container } from 'postcss';
 
 const QRScanner = ({}:{} ) => {
     const [scanResult, setScanResult] = useState('No result');
@@ -16,9 +15,8 @@ const QRScanner = ({}:{} ) => {
     };
 
     const handleScan = (result: any) => {
-        // if the result contains "ethereum:" we remove it and keep the rest
-        if (result && result.includes('0x')) {
-            result = result.replace('ethereum:', '');
+        // if the result contains "did:xrp:1:" we remove it and keep the rest
+        if (result && result.includes('did:xrp:1:')) {
             setCreateAttestationButton(true);
         }
 
