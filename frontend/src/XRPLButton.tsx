@@ -103,6 +103,7 @@ const XRPLButton = (props: {
             },
           },
         });
+        
         web3auth.configureAdapter(openloginAdapter);
 
         setWeb3auth(web3auth);

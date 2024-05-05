@@ -15,7 +15,7 @@ export default function login() {
         className='py-5'></Image>
 
         <div className='w-[80%] h-[60%] bg-white bg-opacity-50 rounded-xl flex flex-col justify-center items-center'>
-          <XRPLButton />
+          <XRPLButton isAdmin={false} />
         </div>
 
       </div>
