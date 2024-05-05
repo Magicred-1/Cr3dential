@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import NavBar from '@/components/navbar'
+import NavBar from '@/components/navbar-desk'
 
 export default function login() {
   return (
