@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import NavBarMobile from '@/components/navbar-desk';
 import { lexend } from "@/components/utils/const";
-// import ProfileAddressQRCode from "@/components/qrcode";
+import ProfileAddressQRCode from "@/components/qrcode";
 
 export default function Profile() {
   const [showQRDialog, setShowQRDialog] = useState(false);
@@ -58,7 +58,7 @@ export default function Profile() {
       {showQRDialog && (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center">
           <div className="bg-white p-4 rounded-lg">
-            {/* <ProfileAddressQRCode DIDAddress='did:xrpl:1:0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020' /> */}
+              <ProfileAddressQRCode DIDAddress='did:xrpl:1:0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020' />
             <button onClick={hideQRCodeDialog}>Close</button>
           </div>
         </div>

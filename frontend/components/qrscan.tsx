@@ -1,7 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Scanner } from '@yudiel/react-qr-scanner';
+// import { Scanner } from '@yudiel/react-qr-scanner';
+import dynamic from 'next/dynamic';
+
+const DynamicQrScanner = dynamic(() => import('@yudiel/react-qr-scanner').then(mod => mod.Scanner), {
+    ssr: false
+});
+
 
 const QRScanner = () => {
     const [scanResult, setScanResult] = useState('No result');
@@ -38,7 +44,7 @@ const QRScanner = () => {
 
     return (
         <div className="flex flex-col items-center justify-center gap-4">
-            <Scanner
+            <DynamicQrScanner
                 onResult={handleScan}
                 onError={handleError}
             />
@@ -46,11 +52,11 @@ const QRScanner = () => {
             {
                 createAttestationButton ? <button
                     onClick={() => {
-                        console.log('create attestation for: ', scanResult);
+                        console.log('Adding contact with address:', scanResult);
                         // TODO: Trigger the attestation creation logic here on smart contract
                     }
                 }
-                >Create Attestation</button> : null
+                >Add Contact</button> : null
             }
         </div>
     );

@@ -24,11 +24,14 @@ dependencies:
     specifier: ^8.4.0
     version: 8.4.0(@babel/runtime@7.24.5)(xrpl@3.0.0)
   '@yudiel/react-qr-scanner':
-    specifier: ^2.0.0-beta.3
+    specifier: 2.0.0-beta.3
     version: 2.0.0-beta.3(react-dom@18.3.1)(react@18.3.1)
   next:
     specifier: 14.2.3
     version: 14.2.3(react-dom@18.3.1)(react@18.3.1)
+  qrcode.react:
+    specifier: ^3.1.0
+    version: 3.1.0(react@18.3.1)
   react:
     specifier: ^18
     version: 18.3.1
@@ -3111,6 +3114,14 @@ packages:
 
   /qrcode-generator@1.4.4:
     resolution: {integrity: sha512-HM7yY8O2ilqhmULxGMpcHSF1EhJJ9yBj8gvDEuZ6M+KGJ0YY2hKpnXvRD+hZPLrDVck3ExIGhmPtSdcjC+guuw==}
+    dev: false
+
+  /qrcode.react@3.1.0(react@18.3.1):
+    resolution: {integrity: sha512-oyF+Urr3oAMUG/OiOuONL3HXM+53wvuH3mtIWQrYmsXoAq0DkvZp2RYUWFSMFtbdOpuS++9v+WAkzNVkMlNW6Q==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /queue-microtask@1.2.3:
