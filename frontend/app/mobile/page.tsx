@@ -20,7 +20,7 @@ export default function Home() {
         text-white hover:text-black
           xl:text-md lg:text-sm text-xs
           bg-noirmat hover:bg-white'
-          href="/">
+          href="/mobile/login">
             Go to the App
         </a>
 
@@ -39,7 +39,7 @@ export default function Home() {
             text-white hover:text-black
               xl:text-lg lg:text-md md:text-sm text-xs
               bg-noirmat hover:bg-white'
-              href="/">
+              href="/mobile/login">
                 Get Started
             </a>
         </div>

@@ -1,6 +1,9 @@
+"use client";
+
 import React from 'react'
 import Image from 'next/image'
 import NavBar from '@/components/navbar-desk'
+import XRPLButton from '@/src/XRPLButton'
 
 export default function login() {
   return (
@@ -12,8 +15,7 @@ export default function login() {
         className='py-5'></Image>
 
         <div className='w-[80%] h-[60%] bg-white bg-opacity-50 rounded-xl flex flex-col justify-center items-center'>
-          
-          
+          <XRPLButton />
         </div>
 
       </div>

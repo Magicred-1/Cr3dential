@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AuthProvider> 
+        <AuthProvider>
           {children}
         </AuthProvider>
       </body>

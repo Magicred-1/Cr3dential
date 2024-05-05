@@ -5,6 +5,8 @@ import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { XrplPrivateKeyProvider } from "@web3auth/xrpl-provider";
 import RPC from "./RPC";
 
+import Router from "next/router";
+
 const clientId = "BB-L9kbN4pFagxGuwtq12Qzh-4cqOPjdueOPwFw14z7PlxkwfBbZ3GnW5wnfiTilbN_JoskT7Yvo2BstonpkmaQ";
 
 const XRPLButton = () => {
@@ -199,46 +201,11 @@ const XRPLButton = () => {
 
   const loggedInView = (
     <>
-      <div className="flex-container">
-        <div>
-          <button onClick={getUserInfo} className="card">
-            Get User Info
-          </button>
-        </div>
-        <div>
-          <button onClick={authenticateUser} className="card">
-            Get ID Token
-          </button>
-        </div>
-        <div>
-          <button onClick={getAccounts} className="card">
-            Get Accounts
-          </button>
-        </div>
-        <div>
-          <button onClick={getBalance} className="card">
-            Get Balance
-          </button>
-        </div>
-        <div>
-          <button onClick={signMessage} className="card">
-            Sign Message
-          </button>
-        </div>
-        <div>
-          <button onClick={sendTransaction} className="card">
-            Send Transaction
-          </button>
-        </div>
-        <div>
-          <button onClick={logout} className="card">
-            Log Out
-          </button>
-        </div>
-      </div>
-      <div id="console" style={{ whiteSpace: "pre-line" }}>
-        <p style={{ whiteSpace: "pre-line" }}></p>
-      </div>
+      {/* Redirect to Profile Page after login */}
+
+      <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        You're connected.
+      </button>
     </>
   );
 
