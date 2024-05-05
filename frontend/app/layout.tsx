@@ -3,6 +3,7 @@
 import "./globals.css";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { AuthProvider } from "@/src/context/XRPLContext";
 
 export default function RootLayout({
   children,
@@ -27,7 +28,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AuthProvider> 
+          {children}
+        </AuthProvider>
+      </body>
     </html>
   );
 }

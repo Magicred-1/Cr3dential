@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import LandingBg from "@/components/landing-bg";
 import { lexend } from "@/components/utils/const"
