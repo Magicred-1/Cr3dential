@@ -20,7 +20,7 @@ export default function Scan() {
             <div className={`mt-10 text-white ${lexend.className} text-xl`}>QR Scanner</div>
           
             <div className='w-[60%] h-[30%]'>
-                <QRScanner></QRScanner>
+                {/* <QRScanner></QRScanner> */}
             </div>
           
         </div>

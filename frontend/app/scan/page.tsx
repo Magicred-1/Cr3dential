@@ -30,7 +30,7 @@ export default function Scan() {
             </div>
 
             <div className='w-[30%] h-auto rounded-[100px]'>
-              <QRScanner></QRScanner>
+              {/* <QRScanner></QRScanner> */}
             </div>
 
           </div>

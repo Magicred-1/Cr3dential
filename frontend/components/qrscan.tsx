@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Scanner } from '@yudiel/react-qr-scanner';
 
-const QRScanner = ({}:{} ) => {
+const QRScanner = () => {
     const [scanResult, setScanResult] = useState('No result');
     const [scanError, setScanError] = useState('');
     const [createAttestationButton, setCreateAttestationButton] = useState(false);
