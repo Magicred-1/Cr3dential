@@ -6,6 +6,8 @@ import { XrplPrivateKeyProvider } from "@web3auth/xrpl-provider";
 import RPC from "./RPC";
 
 import { useRouter } from "next/navigation";
+import { uploadToIPFS } from "./xrpl-transact/pinata";
+import { useAuth } from "./context/XRPLContext";
 
 const clientId = "BB-L9kbN4pFagxGuwtq12Qzh-4cqOPjdueOPwFw14z7PlxkwfBbZ3GnW5wnfiTilbN_JoskT7Yvo2BstonpkmaQ";
 
@@ -13,6 +15,8 @@ const XRPLButton = () => {
   const [web3auth, setWeb3auth] = useState<Web3Auth | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const webAuthContext = useAuth();
+
 
   const router = useRouter();
 
@@ -107,6 +111,7 @@ const XRPLButton = () => {
         if (web3auth.connected) {
           setProvider(web3auth.provider!);
           setLoggedIn(true);
+          webAuthContext.setWeb3Auth(web3auth);
         }
       } catch (error) {
         console.error(error);
@@ -134,6 +139,25 @@ const XRPLButton = () => {
     const idToken = await web3auth.authenticateUser();
     uiConsole(idToken);
   };
+
+  const getPublicKey = async () => {
+    console.log("getPublicKey");
+
+    if (!provider) {
+      uiConsole("web3auth not initialized yet");
+      return;
+    }
+    const publicKey = await provider.request<never, string>({
+      method: "xrpl_getPublicKey",
+    });
+
+    // const res = await uploadToIPFS("azfiazfzaifnaziufn")
+    // console.log("🚀 ~ getPublicKey ~ res:", res)
+
+    console.log("🚀 ~ getPublicKey ~ publicKey:", publicKey)
+
+    uiConsole(publicKey);
+  }
 
   const getUserInfo = async () => {
     if (!web3auth) {
@@ -171,6 +195,7 @@ const XRPLButton = () => {
     }
     const rpc = new RPC(provider);
     const balance = await rpc.getBalance();
+    console.log("🚀 ~ getBalance ~ balance:", balance)
     uiConsole("Balance", balance);
   };
 
@@ -194,7 +219,22 @@ const XRPLButton = () => {
     uiConsole(result);
   };
 
+  const setDID = async () => {
+    if (!provider) {
+      uiConsole("provider not initialized yet");
+      return;
+    }
+
+    const testIPFS = await uploadToIPFS("afzafazfazfssssssssssssssaaaaaaaaa")
+
+    const rpc = new RPC(provider);
+    const result = await rpc.signAndSetDid(testIPFS);
+    uiConsole(result);
+  }
+
   function uiConsole(...args: any[]): void {
+    const text = JSON.stringify(args || {}, null, 2);
+    console.log("🚀 ~ uiConsole ~ text:", text)
     const el = document.querySelector("#console>p");
     if (el) {
       el.innerHTML = JSON.stringify(args || {}, null, 2);
@@ -206,6 +246,32 @@ const XRPLButton = () => {
       {/* Redirect to Profile Page after login */}
       <button onClick={() => router.push("/profile")} className="button button-primary">
         Profile
+      </button>
+      <button onClick={getPublicKey} className="button button-primary">
+        Get Public Key
+      </button>
+      <button onClick={() => setDID()} >
+        setDid
+      </button>
+
+      <button onClick={getBalance}>
+        get balance
+      </button>
+
+      <button onClick={getAccounts}>
+        get accounts
+      </button>
+
+      <button onClick={getUserInfo} >
+        getUserInfo
+      </button>
+
+      <button onClick={signMessage} >
+        sign message
+      </button>
+
+      <button onClick={sendTransaction} >
+        send transaction
       </button>
     </>
   );

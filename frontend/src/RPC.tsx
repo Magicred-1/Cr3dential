@@ -1,5 +1,5 @@
 import { IProvider } from "@web3auth/base";
-import { convertStringToHex, Payment, xrpToDrops } from "xrpl";
+import { convertStringToHex, DIDSet, Payment, xrpToDrops } from "xrpl";
 
 export default class XrplRPC {
   private provider: IProvider;
@@ -14,6 +14,7 @@ export default class XrplRPC {
         method: "xrpl_getAccounts",
       });
       if (accounts) {
+        console.log("🚀 ~ XrplRPC ~ getAccounts= ~ accounts:", accounts)
         const accInfo = await this.provider.request({
           method: "account_info",
           params: [
@@ -80,6 +81,37 @@ export default class XrplRPC {
     }
   };
 
+  signAndSetDid = async (didIPFSHash: string): Promise<any> => {
+    console.log("🚀 ~ XrplRPC ~ signAndSetDid= ~ didIPFSHash:", didIPFSHash)
+    try {
+      const accounts = await this.provider.request<never, string[]>({
+        method: "xrpl_getAccounts",
+      });
+
+      if (accounts && accounts.length > 0) {
+        const tx: DIDSet = {
+          TransactionType: "DIDSet",
+          Account: accounts[0] as string,
+          URI: "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469",
+        };
+        console.log("🚀 ~ XrplRPC ~ signAndSetDid= ~ tx:", tx)
+        const txSign = await this.provider.request({
+          method: "xrpl_submitTransaction",
+          params: {
+            transaction: tx,
+          },
+        });
+        console.log("🚀 ~ XrplRPC ~ signAndSetDid= ~ txSign:", txSign)
+        return txSign;
+      } else {
+        return "failed to fetch accounts";
+      }
+    } catch (error) {
+      console.log("error", error);
+      return error;
+    }
+  };
+
   signAndSendTransaction = async (): Promise<any> => {
     try {
       const accounts = await this.provider.request<never, string[]>({
@@ -90,7 +122,7 @@ export default class XrplRPC {
         const tx: Payment = {
           TransactionType: "Payment",
           Account: accounts[0] as string,
-          Amount: xrpToDrops(50),
+          Amount: xrpToDrops(0.0001),
           Destination: "rM9uB4xzDadhBTNG17KHmn3DLdenZmJwTy",
         };
         const txSign = await this.provider.request({

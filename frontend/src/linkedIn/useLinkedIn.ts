@@ -2,7 +2,6 @@ import login from "@/app/login/page";
 import { linkedInAccessToken } from "./linkedInServer";
 import { useState } from "react";
 
-
 type LinkedCertification = {
     id: string;
     name: string;
@@ -10,6 +9,7 @@ type LinkedCertification = {
     issueDate: string;
     expirationDate: string;
     credentialUrl: string;
+    pictureUrl?: string;
 }
 
 export const getMyCertifications = async () => {
@@ -63,7 +63,8 @@ export const useLinkedIn = () => {
             authority: "LinkedIn Learning",
             issueDate: "2022-01-15",
             expirationDate: "2025-01-15",
-            credentialUrl: "https://www.linkedin.com/learning/certification/web-development"
+            credentialUrl: "https://www.linkedin.com/learning/certification/web-development",
+            pictureUrl: "https://media-exp1.licdn.com/dms/image/C4D0BAQG1J9J9Q9Q9JQ/learning-public-certificate-1.png"
         },
         {
             id: "2",
