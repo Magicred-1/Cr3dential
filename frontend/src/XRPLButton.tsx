@@ -5,7 +5,7 @@ import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { XrplPrivateKeyProvider } from "@web3auth/xrpl-provider";
 import RPC from "./RPC";
 
-import Router from "next/router";
+import { useRouter } from "next/navigation";
 
 const clientId = "BB-L9kbN4pFagxGuwtq12Qzh-4cqOPjdueOPwFw14z7PlxkwfBbZ3GnW5wnfiTilbN_JoskT7Yvo2BstonpkmaQ";
 
@@ -13,6 +13,8 @@ const XRPLButton = () => {
   const [web3auth, setWeb3auth] = useState<Web3Auth | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const router = useRouter();
 
   const chainConfig = {
     chainNamespace: CHAIN_NAMESPACES.XRPL,
@@ -202,9 +204,8 @@ const XRPLButton = () => {
   const loggedInView = (
     <>
       {/* Redirect to Profile Page after login */}
-
-      <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-        You're connected.
+      <button onClick={() => router.push("/profile")} className="button button-primary">
+        Profile
       </button>
     </>
   );
