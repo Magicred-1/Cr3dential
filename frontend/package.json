@@ -15,7 +15,17 @@
     "next-auth": "5.0.0-beta.17",
     "react": "^18",
     "react-dom": "^18",
-    "react-linkedin-login-oauth2": "^2.0.1"
+    "react-linkedin-login-oauth2": "^2.0.1",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^1.2.5",
+    "@web3auth/base": "^8.4.0",
+    "@web3auth/modal": "^8.4.0",
+    "@web3auth/openlogin-adapter": "^8.4.0",
+    "@web3auth/xrpl-provider": "^8.4.0",
+    "@yudiel/react-qr-scanner": "2.0.0-beta.3",
+    "qrcode.react": "^3.1.0",
+    "react-qr-code": "^2.0.12",
+    "xrpl": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
