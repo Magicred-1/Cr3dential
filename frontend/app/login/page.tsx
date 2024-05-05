@@ -12,7 +12,7 @@ export default function login() {
         
         <Image alt="" width="150" height="150" src="/logo_cr3dential.svg" ></Image>
 
-        <XRPLButton />
+        <XRPLButton isAdmin={false} />
       </div>
       
     </div>

@@ -11,12 +11,13 @@ import { useAuth } from "./context/XRPLContext";
 
 const clientId = "BB-L9kbN4pFagxGuwtq12Qzh-4cqOPjdueOPwFw14z7PlxkwfBbZ3GnW5wnfiTilbN_JoskT7Yvo2BstonpkmaQ";
 
-const XRPLButton = () => {
+const XRPLButton = (props: {
+  isAdmin: boolean;
+}) => {
   const [web3auth, setWeb3auth] = useState<Web3Auth | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const webAuthContext = useAuth();
-
 
   const router = useRouter();
 
@@ -241,7 +242,7 @@ const XRPLButton = () => {
     }
   }
 
-  const loggedInView = (
+  const adminView = (
     <>
       {/* Redirect to Profile Page after login */}
       <button onClick={() => router.push("/profile")} className="button button-primary">
@@ -276,6 +277,15 @@ const XRPLButton = () => {
     </>
   );
 
+  const loggedInView = (
+    <>
+      {/* Redirect to Profile Page after login */}
+      <button onClick={() => router.push("/profile")} className="button button-primary">
+        Profile
+      </button>
+    </>
+  );
+
   const unloggedInView = (
     <button onClick={login} className="button button-primary">
       Login
@@ -284,7 +294,7 @@ const XRPLButton = () => {
 
   return (
     <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      {loggedIn ? loggedInView : unloggedInView}
+      {loggedIn ? (props.isAdmin ? adminView : loggedInView) : unloggedInView}
     </div>
   );
 }

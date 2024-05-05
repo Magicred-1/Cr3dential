@@ -1,4 +1,6 @@
-import { useWebAuth } from "@/src/useWebAuth";
+"use client"
+
+import XRPLButton from "@/src/XRPLButton";
 
 function AdminPage() {
 
@@ -8,11 +10,8 @@ function AdminPage() {
         <div>
             <h1>Admin Page</h1>
 
-
-            <button className="button button-primary">
-                Get Public Key
-            </button>
-
+            <XRPLButton isAdmin />
+            
         </div>
 
      );
