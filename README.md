@@ -1,4 +1,4 @@
-# Cr3dentials
+# Cr3dential
 
 ![Cr3dentials](https://www.cr3dential.com/logo_cr3dential_white.svg)
 
